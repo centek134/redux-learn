@@ -1,6 +1,9 @@
-import {React} from 'react'
+import { React } from 'react'
 import styled from 'styled-components';
-import Button from '../Button/Button.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment, incrementByAmount, toggleCounter} from '../../reducers/counter.js';
+
+
 
 const CounterSection = styled.section`
     height: 400px;
@@ -28,18 +31,40 @@ const CounterValue = styled.h2`
     margin: 20px 0;
     font-size: 48px;
 `
+const Button = styled.button`
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #8200b6;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid #fff;
+    font-weight: 800;
+    transition: 0.5s;
+
+    :hover{
+        background-color: #fff;
+        color: #8200b6;
+        border: 2px solid #8200b6;
+    }
+`
 
 const Counter = () => {
+    const dispatch = useDispatch();
+    const count = useSelector( state => state.counter.value);
+    const show = useSelector( state => state.counter.showCounter);
 
     return(
         <CounterSection>
             <Title>Redux Counter:</Title>
-            <CounterValue>2</CounterValue>
+            {show ? 
+            <CounterValue>{count}</CounterValue> : null
+            }
             <FlexWrap>
-                <Button>Increment by 1</Button>
-                <Button>Decrement by 1</Button>
-                <Button>Increment by 10</Button>
-                <Button>Toggle Counter</Button>
+                <Button onClick = {() => dispatch(increment())}>Increment by 1</Button>
+                <Button onClick = {() => dispatch(decrement())}>Decrement by 1</Button>
+                <Button onClick = {() => dispatch(incrementByAmount(10))}>Increment by 10</Button>
+                <Button onClick = {() => dispatch(toggleCounter())}>Toggle Counter</Button>
             </FlexWrap>
         </CounterSection>
     );
