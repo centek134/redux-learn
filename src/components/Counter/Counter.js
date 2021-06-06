@@ -10,6 +10,18 @@ const CounterSection = styled.section`
     width: 800px;
     background-color: #fff;
     border-radius: 15px;
+
+    @media only screen and (max-width:850px){
+        width: 600px;
+    }
+    @media only screen and (max-width:650px){
+        width: 400px;
+        height: 250px;
+    }
+    @media only screen and (max-width:450px){
+        width: 300px;
+        height: 250px;
+    }
 `;
 
 const FlexWrap = styled.div`
@@ -18,18 +30,37 @@ const FlexWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
+    @media only screen and (max-width:650px){
+        height: 100px;
+    }
+    @media only screen and (max-width:450px){
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,1fr);
+    }
 `;
 
 const Title = styled.h1`
     text-align: center;
     margin: 20px 0;
     font-size: 64px;
+    @media only screen and (max-width:850px){
+        font-size: 48px;
+    }
+    @media only screen and (max-width:650px){
+        font-size: 32px;
+    }
 `
 const CounterValue = styled.h2`
     color: #8200b6;
     text-align: center;
     margin: 20px 0;
     font-size: 48px;
+
+    @media only screen and (max-width:650px){
+        font-size: 28px;
+    }
 `
 const Button = styled.button`
     padding: 15px 25px;
@@ -47,6 +78,18 @@ const Button = styled.button`
         color: #8200b6;
         border: 2px solid #8200b6;
     }
+    @media only screen and (max-width:850px){
+        font-size: 14px;
+        padding: 15px 20px;
+    }
+    @media only screen and (max-width:650px){
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    @media only screen and (max-width:450px){
+        padding: 10px 5px;
+    }
+    
 `
 
 const Counter = () => {
